@@ -1,9 +1,9 @@
 <div *ngIf="details">
-  <img [src]="details.snippet.thumbnails.standard.url">
-  <p>Title: {{ details.snippet.title }}</p>
+  <p>Title: {{ details.snippet.title }}</p>  
+  <youtube-player videoId="{{details.id}}" [height]="250" [width]="500"></youtube-player>
   <p>Channel Name: {{ details.snippet.channelTitle }}</p>
   <p>Likes: {{ details.statistics.likeCount }}</p>
   <p>Dislikes: {{ details.statistics.dislikeCount }}</p>
-  <p>Visualizations: {{ details.statistics.viewCount }}</p>
   <p>Description: {{ details.snippet.description }}</p>
+  <p>Visualizations: {{ details.statistics.viewCount }}</p>
 </div>

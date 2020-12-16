@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { YoutubeService } from 'src/app/youtube.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-details',
@@ -11,14 +12,19 @@ export class DetailsComponent implements OnInit {
 
   video_id!: string;
   details!: any;
+  safeURL!: SafeResourceUrl;
 
   constructor(
+    private _sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private service: YoutubeService
-  ) { }
+    private service: YoutubeService    
+  ) {
+    
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => this.video_id = String(params.get('id')));
+    console.log(this.video_id);
     this.service
       .details(this.video_id)
       .subscribe(
@@ -30,6 +36,7 @@ export class DetailsComponent implements OnInit {
   success(result: any) {
     console.log(result);
     this.details = result;
+    this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/watch?v=${this.details.id.video_id}`);
   }
 
   err(msg: string){

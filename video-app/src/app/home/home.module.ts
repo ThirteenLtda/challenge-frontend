@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { VideoListComponent } from './video-list/video-list.component';
 import { DetailsComponent } from './details/details.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 
 
@@ -15,6 +16,7 @@ import { DetailsComponent } from './details/details.component';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    YouTubePlayerModule,
     HomeRoutes
   ],
 })
