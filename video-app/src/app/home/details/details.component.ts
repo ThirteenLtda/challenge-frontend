@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { YoutubeService } from 'src/app/youtube.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -17,6 +17,7 @@ export class DetailsComponent implements OnInit {
   constructor(
     private _sanitizer: DomSanitizer,
     private route: ActivatedRoute,
+    private navigation: Router,
     private service: YoutubeService    
   ) {
     
@@ -41,6 +42,10 @@ export class DetailsComponent implements OnInit {
 
   err(msg: string){
     console.log(msg);
+  }
+
+  back(){
+    this.navigation.navigateByUrl('');
   }
 
 }
