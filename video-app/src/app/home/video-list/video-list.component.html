@@ -1,0 +1,9 @@
+<div *ngFor="let video of videos">
+  <div>
+    <img [src]="video.snippet.thumbnails.default.url">
+    <p>Title: {{ video.snippet.title }}</p>
+    <p>Channel Name: {{ video.snippet.channelTitle }}</p>
+    <p>Description: {{ video.snippet.description }}</p>
+    <br>
+  </div>
+</div>
