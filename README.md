@@ -1,4 +1,4 @@
-# Web Interface Software Engineer: Front-End Challenge
+<!-- # Web Interface Software Engineer: Front-End Challenge
 Develop an HTML5 application.
 
 ## Instructions
@@ -52,4 +52,31 @@ Do not be concerned if you were not able to completely finish the challenge, eve
 
 Be sure to document your solution to your best, this will be highly appreciated.
 
-Good luck :) 
+Good luck :)  -->
+
+# Setup para desenvolvimento
+
+## Passo 1: Instalar o NodeJS
+
+Instale o [NodeJS(LTS)](https://nodejs.org/en/download/).
+Verifique a instalação com o comando `node -v` no Terminal. Deverá aparecer a informação: "v14.15.2".
+
+## Passo 2: Instalar o Angular
+
+Instale o Angular com o comando `npm install -g @angular/cli` no Terminal.
+Verifique a instalação com o comando `ng --version` no Terminal. Deverá aparecer a informação da versão instalada.
+
+## Passo 3: Executar o video-app
+
+Acesse o diretório da aplicação com o comando `cd video-app`.
+Execute a aplicação com o comando `ng serve -o`.
+
+# Documentação
+
+A ferramenta de documentação utilizada é o [Compodoc](https://compodoc.app/).
+
+Acesse o diretório da aplicação com o comando `cd video-app`.
+
+Execute o comando `compodoc -p tsconfig.app.json src -s`.
+
+A documentação está disponível em `http://127.0.0.1:8080`.
