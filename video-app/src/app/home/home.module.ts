@@ -5,11 +5,12 @@ import { HomeRoutes } from './home.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { VideoListComponent } from './video-list/video-list.component';
+import { DetailsComponent } from './details/details.component';
 
 
 
 @NgModule({
-  declarations: [HomeComponent, VideoListComponent],
+  declarations: [HomeComponent, VideoListComponent, DetailsComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

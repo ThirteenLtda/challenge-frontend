@@ -1,9 +1,11 @@
 <div *ngFor="let video of videos">
   <div>
+    <br>
     <img [src]="video.snippet.thumbnails.default.url">
     <p>Title: {{ video.snippet.title }}</p>
     <p>Channel Name: {{ video.snippet.channelTitle }}</p>
     <p>Description: {{ video.snippet.description }}</p>
+    <button type="button" (click)="selected(video.id.videoId)">Details</button>
     <br>
   </div>
 </div>

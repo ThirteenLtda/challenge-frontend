@@ -10,7 +10,6 @@ import { YoutubeService } from '../youtube.service';
 export class HomeComponent implements OnInit {
 
   form!: FormGroup;
-  search_text!: string;
   search_results!: any[];
 
   constructor(
@@ -22,20 +21,16 @@ export class HomeComponent implements OnInit {
     this.form = this.formBuilder.group({
       searchText: ['']
     });
+    this.search_results = [];
   }
 
   submit() {
-    if (this.form.invalid) { return; }
-
     const form_value = this.form.value;
     this.service
       .search(form_value.searchText)
       .subscribe(
         (results) => this.success(results),
-        err => {
-          console.log(err.error_description);
-          this.err(err.error_description);
-        }
+        err => { this.err(err.error_description); }
       );
   }
 

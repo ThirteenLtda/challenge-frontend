@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-video-list',
@@ -9,14 +10,16 @@ export class VideoListComponent implements OnInit, OnChanges {
 
   @Input() videos!: any[];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.videos);
-  }
+  ngOnChanges(changes: SimpleChanges): void { }
 
   ngOnInit(): void {
     this.videos = [];
+  }
+
+  selected(video_id: string){
+    this.router.navigate([`/${video_id}/details`]);
   }
 
 }
