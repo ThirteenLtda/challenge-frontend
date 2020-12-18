@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { YoutubeService } from 'src/app/youtube.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-details',
@@ -17,7 +18,7 @@ export class DetailsComponent implements OnInit {
   constructor(
     private _sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private navigation: Router,
+    private location: Location,
     private service: YoutubeService    
   ) {
     
@@ -45,7 +46,7 @@ export class DetailsComponent implements OnInit {
   }
 
   back(){
-    this.navigation.navigateByUrl('');
+    this.location.back();
   }
 
 }

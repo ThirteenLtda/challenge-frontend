@@ -1,5 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <input type="text" formControlName="searchText" placeholder="Search your Video">
-  <button type="submit" id="search-film-submit">Search</button>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search your Video" formControlName="searchText">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+  </div>
 </form>
-<app-video-list [videos]="search_results"></app-video-list>
+
+<app-video-list [videos]="searchResults"></app-video-list>
