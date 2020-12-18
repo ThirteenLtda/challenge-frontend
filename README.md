@@ -84,6 +84,6 @@ A ferramenta de documentação utilizada é o [Compodoc](https://compodoc.app/).
 
 Acesse o diretório da aplicação com o comando `cd video-app`.
 
-Execute o comando `compodoc -p tsconfig.app.json src -s`.
+Execute o comando `compodoc -p tsconfig.json src -s`.
 
 A documentação está disponível em `http://127.0.0.1:8080`.
