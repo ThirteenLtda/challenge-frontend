@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { YoutubeService } from 'src/app/youtube.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+}
 
 @Component({
   selector: 'app-details',
@@ -16,7 +24,6 @@ export class DetailsComponent implements OnInit {
   safeURL!: SafeResourceUrl;
 
   constructor(
-    private _sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private location: Location,
     private service: YoutubeService    
@@ -25,20 +32,21 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => this.video_id = String(params.get('id')));
-    console.log(this.video_id);
-    this.service
-      .details(this.video_id)
-      .subscribe(
-        (results) => this.success(results.items[0]),
-        err => { this.err(err.error_description) }
-      );
+    this.route.paramMap.subscribe(
+      (params) => {
+        this.video_id = String(params.get('id'));
+        this.service
+          .details(this.video_id)
+          .subscribe(
+            (results) => this.success(results.items[0]),
+            err => { this.err(err.error_description) }
+          );
+      }
+    );
   }
 
   success(result: any) {
-    console.log(result);
     this.details = result;
-    this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/watch?v=${this.details.id.video_id}`);
   }
 
   err(msg: string){

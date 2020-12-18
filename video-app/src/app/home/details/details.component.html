@@ -1,10 +1,35 @@
-<div *ngIf="details">
-  <button type="button" (click)="back()">Back</button>
-  <p>Title: {{ details.snippet.title }}</p>  
-  <youtube-player videoId="{{details.id}}" [height]="250" [width]="500"></youtube-player>
-  <p>Channel Name: {{ details.snippet.channelTitle }}</p>
-  <p>Likes: {{ details.statistics.likeCount }}</p>
-  <p>Dislikes: {{ details.statistics.dislikeCount }}</p>
-  <p>Description: {{ details.snippet.description }}</p>
-  <p>Visualizations: {{ details.statistics.viewCount }}</p>
+<div class="container-fluid">
+  
+  <div class="row justify-content-between my-4">
+    <div class="col-md-1">
+      <button type="button" class="btn btn-secondary" (click)="back()">Voltar</button>
+    </div>
+    <div class="col-md-11" *ngIf="details">
+      <h4>{{ details.snippet?.title }}</h4>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="details">
+    <div class="col-md-11 offset-md-1">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" [src]="'https://www.youtube.com/embed/' + details.id | safe" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="col-md-9 offset-md-1">
+      <h5 class="text-muted">{{ details.snippet.channelTitle }}</h5>
+    </div>
+    <div class="col-md-1">
+      <p>Likes: {{ details.statistics.likeCount }}</p>
+    </div>
+    <div class="col-md-1">
+      <p>Dislikes: {{ details.statistics.dislikeCount }}</p>
+    </div>
+    <div class="col-md-11 offset-md-1">
+      <p>{{ details.snippet.description }}</p>
+    </div>
+    <div class="col-md-11 offset-md-1">
+      <p>Visualizations: {{ details.statistics.viewCount }}</p>
+    </div>
+  </div>
+
 </div>

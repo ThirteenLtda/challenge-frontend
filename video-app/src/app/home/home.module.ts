@@ -5,18 +5,16 @@ import { HomeRoutes } from './home.routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { VideoListComponent } from './video-list/video-list.component';
-import { DetailsComponent } from './details/details.component';
-import { YouTubePlayerModule } from '@angular/youtube-player';
+import { DetailsComponent, SafePipe } from './details/details.component';
 
 
 
 @NgModule({
-  declarations: [HomeComponent, VideoListComponent, DetailsComponent],
+  declarations: [HomeComponent, VideoListComponent, DetailsComponent, SafePipe],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    YouTubePlayerModule,
     HomeRoutes
   ],
 })

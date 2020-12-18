@@ -1,10 +1,16 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Search your Video" formControlName="searchText">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="submit">Search</button>
+<div class="container-fluid">
+  <div class="row my-4">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search your Video" formControlName="searchText">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-</form>
+</div>
 
 <app-video-list [videos]="searchResults"></app-video-list>
