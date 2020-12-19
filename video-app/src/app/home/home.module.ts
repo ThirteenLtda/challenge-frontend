@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { VideoListComponent } from './video-list/video-list.component';
 import { DetailsComponent, SafePipe } from './details/details.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -15,7 +16,8 @@ import { DetailsComponent, SafePipe } from './details/details.component';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HomeRoutes
+    HomeRoutes,
+    FontAwesomeModule
   ],
 })
 export class HomeModule { }

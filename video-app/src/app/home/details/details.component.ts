@@ -3,6 +3,7 @@ import { ActivatedRoute} from '@angular/router';
 import { YoutubeService } from 'src/app/youtube.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+import { faChevronLeft, faEye, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {
@@ -18,9 +19,16 @@ export class SafePipe implements PipeTransform {
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
+  faBack = faChevronLeft;
+  faLike = faThumbsUp;
+  faDislike = faThumbsDown;
+  faViews = faEye;
 
   video_id!: string;
-  details!: any;
+  details: any = {
+    id: "7lCqvNnpS-4",
+    statistics: { likeCount: 9.999, dislikeCount: 9.999 }
+  };
   safeURL!: SafeResourceUrl;
 
   constructor(

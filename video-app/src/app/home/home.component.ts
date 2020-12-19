@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { YoutubeService } from '../youtube.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { YoutubeService } from '../youtube.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  faSearch = faSearch;
 
   form!: FormGroup;
   searchResults!: any[];
