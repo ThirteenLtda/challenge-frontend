@@ -76,6 +76,8 @@ Deverá aparecer a informação da versão instalada.
 
 Acesse o diretório da aplicação com o comando `cd video-app`.
 
+Instale as dependências do projeto com o comando `npm install`.
+
 Execute a aplicação com o comando `ng serve -o`.
 
 # Documentação
