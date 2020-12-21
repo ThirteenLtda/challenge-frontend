@@ -25,10 +25,7 @@ export class DetailsComponent implements OnInit {
   faViews = faEye;
 
   video_id!: string;
-  details: any = {
-    id: "7lCqvNnpS-4",
-    statistics: { likeCount: 9.999, dislikeCount: 9.999 }
-  };
+  details: any;
   safeURL!: SafeResourceUrl;
 
   constructor(

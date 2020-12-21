@@ -1,17 +1,17 @@
 <div class="container-fluid">
-  <div class="row justify-content-between my-4" *ngIf="details">
+  <div class="row justify-content-between my-4">
     <div class="col-sm-1 col-md-1">
       <button type="button" class="btn btn-outline-secondary" (click)="back()">
         <fa-icon [icon]="faBack"></fa-icon>
       </button>
     </div>
 
-    <div class="col-md-11">
+    <div class="col-md-11" *ngIf="details">
       <h4>{{ details.snippet?.title }}</h4>
     </div>
   </div>
 
-  <div class="row my-4">
+  <div class="row my-4" *ngIf="details">
     <div class="col-sm-12 col-md-11 offset-md-1">
       <div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" [src]="'https://www.youtube.com/embed/' + details.id | safe" allowfullscreen></iframe>
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <div class="row my-4">
+  <div class="row my-4" *ngIf="details">
     <div class="col-sm-8 col-md-7 offset-md-1">
       <h5 class="text-muted">{{ details.snippet?.channelTitle }}</h5>
     </div>
@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <div class="row my-4">
+  <div class="row my-4" *ngIf="details">  
     <div class="col-sm-12 col-md-11 offset-md-1">
       <p>{{ details.snippet?.description }}</p>
     </div>
