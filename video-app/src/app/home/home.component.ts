@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
   form!: FormGroup;
   searchResults!: any[];
+  nextPageToken!: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -61,7 +62,7 @@ export class HomeComponent implements OnInit {
   }
 
   success(results: any) {
-    console.log(results.items);
+    this.nextPageToken = results.nextPageToken;
     this.searchResults = results.items;
   }
 
