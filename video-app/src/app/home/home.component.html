@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row my-4">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search your Video" formControlName="searchText">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">
+              <fa-icon [icon]="faSearch"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<app-video-list 
+  [videos]="searchResults"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  [fromRoot]="true"
+  (scrolled)="onScroll()"
+></app-video-list>
