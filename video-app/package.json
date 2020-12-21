@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "compodoc": "npx compodoc -p tsconfig.json src -s"
   },
   "private": true,
   "dependencies": {
@@ -19,12 +20,15 @@
     "@angular/platform-browser": "~11.0.4",
     "@angular/platform-browser-dynamic": "~11.0.4",
     "@angular/router": "~11.0.4",
-    "@angular/youtube-player": "10.2.2",
+    "@fortawesome/angular-fontawesome": "^0.8.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "bootstrap": "^4.5.3",
+    "ngx-infinite-scroll": "^10.0.1",
     "rxjs": "~6.6.0",
+    "sweetalert2": "10.10.1",
     "tslib": "^2.0.0",
-    "zone.js": "~0.10.2",
-    "bootstrap": "4.5.3",
-    "sweetalert2": "10.10.1"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1100.4",

@@ -1,11 +1,17 @@
-<div *ngFor="let video of videos">
-  <div>
-    <br>
-    <img [src]="video.snippet.thumbnails.default.url">
-    <p>Title: {{ video.snippet.title }}</p>
-    <p>Channel Name: {{ video.snippet.channelTitle }}</p>
-    <p>Description: {{ video.snippet.description }}</p>
-    <button type="button" (click)="selected(video.id.videoId)">Details</button>
-    <br>
+<div class="container-fluid">
+  <div class="row justify-content-between">
+    <div class="card-deck col-sm-12 col-md-6 col-lg-4" *ngFor="let video of videos">
+      <div class="card border-0 mb-4">
+        <img [src]="video.snippet.thumbnails.default.url" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{ video.snippet.title }}</h5>
+          <h6 class="card-subtitle text-muted">{{ video.snippet.channelTitle }}</h6>
+          <p class="card-text">{{ video.snippet.description }}</p>
+        </div>
+        <div class="card-footer bg-transparent border-0">
+          <button type="button" class="btn btn-secondary" (click)="selected(video.id.videoId)">DETALHES DO VÍDEO</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

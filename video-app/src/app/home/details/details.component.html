@@ -1,10 +1,46 @@
-<div *ngIf="details">
-  <button type="button" (click)="back()">Back</button>
-  <p>Title: {{ details.snippet.title }}</p>  
-  <youtube-player videoId="{{details.id}}" [height]="250" [width]="500"></youtube-player>
-  <p>Channel Name: {{ details.snippet.channelTitle }}</p>
-  <p>Likes: {{ details.statistics.likeCount }}</p>
-  <p>Dislikes: {{ details.statistics.dislikeCount }}</p>
-  <p>Description: {{ details.snippet.description }}</p>
-  <p>Visualizations: {{ details.statistics.viewCount }}</p>
+<div class="container-fluid">
+  <div class="row justify-content-between my-4" *ngIf="details">
+    <div class="col-sm-1 col-md-1">
+      <button type="button" class="btn btn-outline-secondary" (click)="back()">
+        <fa-icon [icon]="faBack"></fa-icon>
+      </button>
+    </div>
+
+    <div class="col-md-11">
+      <h4>{{ details.snippet?.title }}</h4>
+    </div>
+  </div>
+
+  <div class="row my-4">
+    <div class="col-sm-12 col-md-11 offset-md-1">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" [src]="'https://www.youtube.com/embed/' + details.id | safe" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="row my-4">
+    <div class="col-sm-8 col-md-7 offset-md-1">
+      <h5 class="text-muted">{{ details.snippet?.channelTitle }}</h5>
+    </div>
+    <div class="col-sm-2 col-md-2">
+      <fa-icon [icon]="faLike"></fa-icon>
+      <span class="m-2">{{ details.statistics?.likeCount }}</span>
+    </div>
+    <div class="col-sm-2 col-md-2">
+      <fa-icon [icon]="faDislike"></fa-icon>
+      <span class="m-2">{{ details.statistics?.dislikeCount }}</span>
+    </div>
+  </div>
+
+  <div class="row my-4">
+    <div class="col-sm-12 col-md-11 offset-md-1">
+      <p>{{ details.snippet?.description }}</p>
+    </div>
+    <div class="col-sm-12 col-md-11 offset-md-1">
+      <fa-icon [icon]="faViews"></fa-icon>
+      <span class="m-2">{{ details.statistics?.viewCount }}</span>
+    </div>
+  </div>
+
 </div>

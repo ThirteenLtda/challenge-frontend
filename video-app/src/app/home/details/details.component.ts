@@ -1,7 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
 import { YoutubeService } from 'src/app/youtube.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Location } from '@angular/common';
+import { faChevronLeft, faEye, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+}
 
 @Component({
   selector: 'app-details',
@@ -9,35 +19,42 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
+  faBack = faChevronLeft;
+  faLike = faThumbsUp;
+  faDislike = faThumbsDown;
+  faViews = faEye;
 
   video_id!: string;
-  details!: any;
+  details: any = {
+    id: "7lCqvNnpS-4",
+    statistics: { likeCount: 9.999, dislikeCount: 9.999 }
+  };
   safeURL!: SafeResourceUrl;
 
   constructor(
-    private _sanitizer: DomSanitizer,
     private route: ActivatedRoute,
-    private navigation: Router,
+    private location: Location,
     private service: YoutubeService    
   ) {
     
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => this.video_id = String(params.get('id')));
-    console.log(this.video_id);
-    this.service
-      .details(this.video_id)
-      .subscribe(
-        (results) => this.success(results.items[0]),
-        err => { this.err(err.error_description) }
-      );
+    this.route.paramMap.subscribe(
+      (params) => {
+        this.video_id = String(params.get('id'));
+        this.service
+          .details(this.video_id)
+          .subscribe(
+            (results) => this.success(results.items[0]),
+            err => { this.err(err.error_description) }
+          );
+      }
+    );
   }
 
   success(result: any) {
-    console.log(result);
     this.details = result;
-    this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/watch?v=${this.details.id.video_id}`);
   }
 
   err(msg: string){
@@ -45,7 +62,7 @@ export class DetailsComponent implements OnInit {
   }
 
   back(){
-    this.navigation.navigateByUrl('');
+    this.location.back();
   }
 
 }
