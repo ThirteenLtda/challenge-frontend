@@ -15,4 +15,11 @@
   </div>
 </div>
 
-<app-video-list [videos]="searchResults"></app-video-list>
+<app-video-list 
+  [videos]="searchResults"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  [fromRoot]="true"
+  (scrolled)="onScroll()"
+></app-video-list>

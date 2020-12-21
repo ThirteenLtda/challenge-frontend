@@ -63,11 +63,19 @@ export class HomeComponent implements OnInit {
 
   success(results: any) {
     this.nextPageToken = results.nextPageToken;
-    this.searchResults = results.items;
+    this.searchResults = this.searchResults.concat(results.items);
   }
 
   err(msg: string){
     console.log(msg);
+  }
+
+  onScroll() {
+    this.service.search(this.form.value, this.nextPageToken)
+      .subscribe(
+        (results) => this.success(results),
+        err => { this.err(err.error_description); }
+      );
   }
 
 }

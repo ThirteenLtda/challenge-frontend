@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { VideoListComponent } from './video-list/video-list.component';
 import { DetailsComponent, SafePipe } from './details/details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
@@ -17,7 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     HttpClientModule,
     HomeRoutes,
-    FontAwesomeModule
+    FontAwesomeModule,
+    InfiniteScrollModule
   ],
 })
 export class HomeModule { }
